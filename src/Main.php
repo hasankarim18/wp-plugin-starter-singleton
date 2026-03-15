@@ -8,7 +8,7 @@ use Hasan\OurFirstUniquePlugin\BlogContentEdit\BlogContentEdit;
 class Main
 {
     use Singleton;
-
+    public $blog;
     public function init()
     {
         $this->define_constance();
@@ -45,7 +45,7 @@ class Main
 
     private function load_classes()
     {
-        $blog = new BlogContentEdit();
-        $blog->init();
+        $thi->blog = new BlogContentEdit();
+        $this->blog->init();
     }
 }
