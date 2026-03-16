@@ -1,14 +1,25 @@
 <?php
 
-namespace Hasan\OurFirstUniquePlugin;
+// TWWC => Trovia WP Wordcount
 
-use Hasan\OurFirstUniquePlugin\App\Trait\Singleton;
-use Hasan\OurFirstUniquePlugin\BlogContentEdit\BlogContentEdit;
+
+namespace Hasan\TroviaWpWordcount;
+
+use Hasan\TroviaWpWordcount\App\Trait\Singleton;
+// use Hasan\TroviaWpWordcount\BlogContentEdit\BlogContentEdit;
+use Hasan\TroviaWpWordcount\WordCount\WordCount;
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 
 class Main
 {
     use Singleton;
-    public $blog;
+
+    public $wordCount;
+
     public function init()
     {
         $this->define_constance();
@@ -18,16 +29,16 @@ class Main
 
     public function define_constance()
     {
-        define('OUR_FIRST_UNIQUE_PLUGIN_VERSION', '1.0.0');
-        define('OUR_FIRST_UNIQUE_PLUGIN_AUTHOR', 'Hasan Karim');
+        define('TWWC_PLUGIN_VERSION', '1.0.0');
+        define('TWWC_FIRST_UNIQUE_PLUGIN_AUTHOR', 'Hasan Karim');
 
         define(
-            'OUR_FIRST_UNIQUE_PLUGIN_URL',
+            'TWWC_PLUGIN_URL',
             plugin_dir_url(dirname(__DIR__))
         );
 
         define(
-            'OUR_FIRST_UNIQUE_PLUGIN_PATH',
+            'TWWC_PLUGIN_PATH',
             plugin_dir_path(dirname(__DIR__))
         );
     }
@@ -35,9 +46,9 @@ class Main
     public function plugins_loaded()
     {
         load_plugin_textdomain(
-            'our-first-unique-plugin',
+            'TroviaWcpDomain',
             false,
-            dirname(plugin_basename(dirname(__DIR__))) . '/languages'
+            dirname(plugin_basename(dirname(__FILE__))) . '/languages'
         );
         // load classes
         $this->load_classes();
@@ -45,7 +56,8 @@ class Main
 
     private function load_classes()
     {
-        $thi->blog = new BlogContentEdit();
-        $this->blog->init();
+        $this->wordCount = new WordCount();
+        $this->wordCount->init();
+
     }
 }

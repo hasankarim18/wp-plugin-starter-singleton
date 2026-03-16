@@ -3,6 +3,7 @@
     "${workspaceFolder}/vendor/php-stubs/wordpress-stubs",
     "${workspaceFolder}/vendor/arifpavel/elementor-stubs"
   ],
+
   "intelephense.stubs": [
     "apache",
     "bcmath",
@@ -25,17 +26,26 @@
     "xml",
     "wordpress"
   ],
+
+  "editor.inlayHints.enabled": "on",
+  "intelephense.inlayHints.parameterNames.enabled": true,
+  "intelephense.inlayHints.variableTypes.enabled": true,
+  "intelephense.inlayHints.propertyDeclarationTypes.enabled": true,
+  "intelephense.inlayHints.functionReturnTypes.enabled": true,
+
   "intelephense.diagnostics.enable": true,
   "intelephense.files.associations": ["**/*.php"],
   "intelephense.telemetry.enabled": false,
+
   "files.exclude": {
-    // "**/node_modules": true,
     "**/vendor/**/.git": true
   },
+
   "search.exclude": {
     "**/node_modules": true,
     "**/vendor": true
   },
-  "window.zoomLevel": 0.2,
-  "editor.fontSize": 18
+
+  "window.zoomLevel": 0.3,
+  "editor.fontSize": 14
 }
